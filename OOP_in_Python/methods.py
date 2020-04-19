@@ -39,3 +39,33 @@ print(circle1.circumference)
 
 circle1 = Circle(3)
 print(circle1.get_area())
+
+
+#Создайте класс BankAccount с атрибутами client_id, client_first_name, client_last_name, balance и
+# методами add() и withdraw(), при помощи которых можно пополнять счет и выводить средства со счета соответственно.
+# Атрибут balance должен инициализироваться по умолчанию значением 0.0 и меняться при срабатывании
+# методов add() и withdraw().
+class BankAccount():
+    balance = 0.0
+    def __init__(self,client_id,client_first_name,client_last_name):
+        self.client_id = client_id
+        self.client_first_name = client_first_name
+        self.client_last_name = client_last_name
+
+    def add(self, summa):
+        self.balance = self.balance + summa
+
+    def withdraw(self,summa):
+        if self.balance - summa >= 0:
+            self.balance = self.balance - summa
+        else:
+            print("Not enough money on your bank account.")
+
+client1Bank = BankAccount(1, "Jack", "James")
+print(client1Bank.balance)
+client1Bank.add(100)
+print(client1Bank.balance)
+client1Bank.withdraw(50)
+print(client1Bank.balance)
+client1Bank.withdraw(60)
+print(client1Bank.balance)
